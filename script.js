@@ -123,8 +123,9 @@ function handleDown(id, file) {
     db.ref('stats/' + id + '/download').transaction(c => (c || 0) + 1);
 }
 
-function openShare(id, title) {
-    curShare = { id, title };
+// Sinthani openShare yanu ikhale motere
+function openShare(id, title, fileUrl) {
+    curShare = { id, title, fileUrl }; // Onjezani fileUrl apa
     document.getElementById('share-name').innerText = title;
     document.getElementById('shareModal').style.display = 'block';
 }
@@ -171,3 +172,4 @@ function searchSongs() {
     });
 
 }
+
