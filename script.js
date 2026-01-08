@@ -131,18 +131,24 @@ function openShare(id, title) {
 
 function closeShare() { document.getElementById('shareModal').style.display = 'none'; }
 
-function copyEmbed() {
-    const embedURL = window.location.origin + window.location.pathname + "?id=" + curShare.id + "&embed=true";
-    const code = `<iframe src="${embedURL}" width="100%" height="80" frameborder="0"></iframe>`;
-    navigator.clipboard.writeText(code);
-    alert("Embed code yakopedwa!");
-}
+window.copyEmbed = function() {
+    // Tikupanga player ya HTML5 yomwe izangosewera file ya nyimboyo
+    const embedCode = `<audio controls style="width:100%"><source src="${curShare.fileUrl}" type="audio/mpeg">Browser yanu siikuthandiza audio player.</audio>`;
+    
+    navigator.clipboard.writeText(embedCode).then(() => {
+        alert("Embed code ya Player yakopedwa!");
+    });
+};
 
-function copyLink() {
-    navigator.clipboard.writeText(window.location.origin + window.location.pathname + "?id=" + curShare.id);
-    alert("Link yakopedwa!");
-    db.ref('stats/' + curShare.id + '/share').transaction(c => (c || 0) + 1);
-}
+window.copyLink = function() {
+    const directLink = curShare.fileUrl; // Izi zitenga link ya mp3
+    navigator.clipboard.writeText(directLink).then(() => {
+        alert("Link ya nyimbo yakopedwa!");
+        if (typeof db !== 'undefined') {
+            db.ref('stats/' + curShare.id + '/share').transaction(c => (c || 0) + 1);
+        }
+    });
+};
 
 function shareTo(p) {
     const link = window.location.origin + window.location.pathname + "?id=" + curShare.id;
@@ -163,4 +169,5 @@ function searchSongs() {
     document.querySelectorAll('.song-card').forEach(card => {
         card.style.display = card.innerText.toLowerCase().includes(input) ? "block" : "none";
     });
+
 }
