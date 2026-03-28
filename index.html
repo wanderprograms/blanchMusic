@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Hub | Lite</title>
+    <title>WanderSlapp</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,8 +11,8 @@
 
     <div id="website-ui">
         <header>
-            <h1>MUSIC HUB</h1>
-            <input type="text" id="searchInput" onkeyup="searchSongs()" placeholder="Saka nyimbo...">
+            <h1>WANDERSLAPP MUSIC</h1>
+            <input type="text" id="searchInput" onkeyup="searchSongs()" placeholder="Search...">
         </header>
 
         <nav class="nav-tabs">
@@ -47,7 +47,7 @@
         <button id="backToTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
 
         <div class="footer-player">
-            <div id="playing-title">Sankhani nyimbo...</div>
+            <div id="playing-title">Select Song...</div>
             <audio id="mainAudio" controls></audio>
         </div>
     </div>   
@@ -55,7 +55,7 @@
     <div id="shareModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeShare()">&times;</span>
-            <p style="font-size:14px;">Gawirani: <strong id="share-name"></strong></p>
+            <p style="font-size:14px;">Share this song: <strong id="share-name"></strong></p>
             <div class="share-options">
                 <button onclick="shareTo('whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
                 <button onclick="shareTo('facebook')"><i class="fab fa-facebook-f"></i> Facebook</button>
@@ -112,7 +112,7 @@
 
     // 2. GO NOW (WhatsApp)
     document.getElementById('goNowBtn').onclick = function() {
-        window.open("https://wa.me/265990914737?text=Ndikufuna kudziwa zambiri za malonda omwe ndawona pa Music Hub", "_blank");
+        window.open("https://wa.me/265990914737?text=Ndikufuna kudziwa zambiri za malonda omwe ndawona pa WanderSlapp Music", "_blank");
     };
 
     // 3. NOT NOW (Bwererani pa site ndikuapitiliza zomwe amachita)

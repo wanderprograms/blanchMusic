@@ -113,7 +113,7 @@ function handlePlay(id, file, title) {
         audio.pause();
     } else {
         audio.src = file; audio.play();
-        document.getElementById('playing-title').innerText = "Mukumvera: " + title;
+        document.getElementById('playing-title').innerText = "Your Listening: " + title;
         db.ref('stats/' + id + '/play').transaction(c => (c || 0) + 1);
     }
 }
@@ -135,12 +135,12 @@ function copyEmbed() {
     const embedURL = window.location.origin + window.location.pathname + "?id=" + curShare.id + "&embed=true";
     const code = `<iframe src="${embedURL}" width="100%" height="80" frameborder="0"></iframe>`;
     navigator.clipboard.writeText(code);
-    alert("Embed code yakopedwa!");
+    alert("Embed code copyd!");
 }
 
 function copyLink() {
     navigator.clipboard.writeText(window.location.origin + window.location.pathname + "?id=" + curShare.id);
-    alert("Link yakopedwa!");
+    alert("Link copyd!");
     db.ref('stats/' + curShare.id + '/share').transaction(c => (c || 0) + 1);
 }
 
